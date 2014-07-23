@@ -138,6 +138,26 @@ class AccountApiCaller extends AbstractCaller
         return null;
     }
 
+    public function findByFirstnameAndLastnameAndBirthday($lastname, $firstname, $birthday)
+    {
+        $content = $this->call("GET", '/accounts/'.$lastname.'/lastnames/'.$firstname.'/firstnames/'.$birthday.'/birthday.json');
+        
+        if ($content) {
+            return json_decode($content, true);
+        }
+
+        return null;
+    }
+    
+    public function findByFirstnameAndLastname($lastname, $firstname)
+    {
+        $content = $this->call("GET", '/accounts/'.$lastname.'/lastnames/'.$firstname.'/firstname.json');
+        
+        if ($content) {
+            return json_decode($content, true);
+        }
+        return null;
+    }
     public function addMailAccount($username)
     {
         $content = $this->call("POST", '/accounts/' . $username . '/email.json');
