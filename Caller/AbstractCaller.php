@@ -44,6 +44,23 @@ abstract class AbstractCaller
         $this->apiServer   = $server;
     }
 
+    protected function arrayToGetParam($data)
+    {
+        $param = '?';
+        $i = 0;
+        foreach ($data as $key => $value) {
+            if ($i != 0) {
+                $param.="&";
+            }
+            $param.= $key."=".$value;
+            $i++;
+        }
+        if ($param == '?')
+            $param = '';
+
+        return $param;
+    }
+
     protected function call($method, $url, $data = null)
     {
        if(!in_array($method, array("GET", "POST", "DELETE", "PUT"))) {

@@ -129,6 +129,17 @@ class AccountApiCaller extends AbstractCaller
         return null;
     }
 
+    public function findSearchQuery($data = array())
+    {
+        $param = $this->arrayToGetParam($data);
+        $content = $this->call("GET", '/search.json'.$param);
+
+        if ($content) {
+            return json_decode($content, true);
+        }
+        return null;
+    }
+
     public function findByEmail($email)
     {
         $content = $this->call("GET", '/emails/' . $email . '/accounts.json');
