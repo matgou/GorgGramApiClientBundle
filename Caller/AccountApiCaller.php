@@ -129,16 +129,27 @@ class AccountApiCaller extends AbstractCaller
         return null;
     }
 
-    public function findSearchQuery($data = array())
+    public function searchUniq($data = array())
     {
         $param = $this->arrayToGetParam($data);
-        $content = $this->call("GET", '/search.json'.$param);
+        $content = $this->call("GET", '/search/uniq.json'.$param);
 
         if ($content) {
             return json_decode($content, true);
         }
         return null;
     }
+
+    public function searchMultiple($data = array())
+    {
+        $param = $this->arrayToGetParam($data);
+        $content = $this->call("GET", 'search/multiple.json'.$param);
+        
+        if ($content) {
+            return json_decode($content, true);
+        }
+        return null;
+    }  
 
     public function findByEmail($email)
     {
