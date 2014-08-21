@@ -149,7 +149,7 @@ class AccountApiCaller extends AbstractCaller
     public function searchMultiple($data = array())
     {
         $param = $this->arrayToGetParam($data);
-        $content = $this->call("GET", 'search/multiple.json'.$param);
+        $content = $this->call("GET", '/search/multiple.json'.$param);
         
         if ($content) {
             return json_decode($content, true);
