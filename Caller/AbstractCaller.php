@@ -49,11 +49,13 @@ abstract class AbstractCaller
         $param = '?';
         $i = 0;
         foreach ($data as $key => $value) {
-            if ($i != 0) {
-                $param.="&";
+            if (null !== $value) {
+                if ($i != 0) {
+                    $param.="&";
+                }
+                $param.= $key."=".$value;
+                $i++;
             }
-            $param.= $key."=".$value;
-            $i++;
         }
         if ($param == '?')
             $param = '';

@@ -77,6 +77,12 @@ class AccountApiCaller extends AbstractCaller
 
     public function update($username, $account)
     {
+        if(!is_array($data)) {
+            $data = $data->toArray();
+        }
+        else {
+
+        }
         $data = $account->toArray();
         unset($data['hruid']);
 
