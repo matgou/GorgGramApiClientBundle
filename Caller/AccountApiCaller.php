@@ -77,13 +77,12 @@ class AccountApiCaller extends AbstractCaller
 
     public function update($username, $account)
     {
-        if(!is_array($data)) {
-            $data = $data->toArray();
+        if(!is_array($account)) {
+            $data = $account->toArray();
         }
         else {
-
+            $data = $account
         }
-        $data = $account->toArray();
         unset($data['hruid']);
 
         if(!self::isSha1($data['password'])) {
