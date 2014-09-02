@@ -81,7 +81,7 @@ class AccountApiCaller extends AbstractCaller
             $data = $account->toArray();
         }
         else {
-            $data = $account
+            $data = $account;
         }
         unset($data['hruid']);
 
